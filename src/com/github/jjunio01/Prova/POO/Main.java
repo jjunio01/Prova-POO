@@ -83,7 +83,8 @@ public class Main {
 					if (poupanca != null) {
 						if (poupanca instanceof Poupanca) {
 							((Poupanca) poupanca).renderJuros();
-							JOptionPane.showMessageDialog(null, "Juros calculados com sucesso\n" + poupanca.toString(),
+							JOptionPane.showMessageDialog(null,
+									"Juros calculados com sucesso\n\n" + poupanca.toString(),
 									"$$$$$ -- Sistema JJBank -- $$$$$", JOptionPane.QUESTION_MESSAGE);
 						} else {
 							JOptionPane.showMessageDialog(null,
@@ -97,6 +98,19 @@ public class Main {
 				case "4":
 					break;
 				case "5":
+					Conta contaAlteracao = consultarCadastroCPF();
+					if (contaAlteracao != null) {
+						String novoNumeroAgencia = JOptionPane.showInputDialog(null,
+								"Digite o novo número da sua agência JJBank", "$$$$$ -- Sistema JJBank -- $$$$$",
+								JOptionPane.QUESTION_MESSAGE);
+						String novoNomeAgencia = JOptionPane.showInputDialog(null,
+								"Digite o novo nome da sua agência JJBank", "$$$$$ -- Sistema JJBank -- $$$$$",
+								JOptionPane.QUESTION_MESSAGE);
+						contaAlteracao.setBanco(new Banco(novoNumeroAgencia, novoNomeAgencia));
+						JOptionPane.showMessageDialog(null,
+								"Informações da Agência atualizadas com sucesso.\n\n" + contaAlteracao.toString(),
+								"$$$$$ -- Sistema JJBank -- $$$$$", JOptionPane.QUESTION_MESSAGE);
+					}
 					break;
 				case "6":
 					Conta contaConsulta = consultarCadastroCPF();
