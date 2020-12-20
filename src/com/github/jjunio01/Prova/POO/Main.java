@@ -242,34 +242,38 @@ public class Main {
 					"$$$$$ -- Sistema JJBank -- $$$$$", JOptionPane.ERROR_MESSAGE);
 			return null;
 		} else {
-			String nomeAgencia = JOptionPane.showInputDialog(null, "Digite o número da sua agência JJBank",
+			String nomeAgencia = JOptionPane.showInputDialog(null, "Digite o nome da sua agência JJBank",
 					"$$$$$ -- Sistema JJBank -- $$$$$", JOptionPane.QUESTION_MESSAGE);
 			informacoesContas += nomeAgencia + "\n";
 			boolean buscarConta = true;
 			for (int i = 0; i < contasCadastradas.size(); i++) {
-				if (contasCadastradas.get(i).getBanco().getNome().equals(nomeAgencia)) {
+				if (contasCadastradas.get(i).getBanco().getNome().equals("JJBank: " + nomeAgencia)) {
 					String numeroAgencia = JOptionPane.showInputDialog(null, "Digite o número da sua agência JJBank",
 							"$$$$$ -- Sistema JJBank -- $$$$$", JOptionPane.QUESTION_MESSAGE);
-					if (contasCadastradas.get(i).getBanco().getNumero().equals(numeroAgencia)) {
+					if (contasCadastradas.get(i).getBanco().getNumero().equals("JJBank: " + numeroAgencia)) {
 						for (int j = 0; j < contasCadastradas.size(); j++) {
-							if (contasCadastradas.get(i).getBanco().getNome().equals(nomeAgencia)) {
+							if (contasCadastradas.get(i).getBanco().getNome().equals("JJBank: " + nomeAgencia)) {
 								informacoesContas += "Nome: " + contasCadastradas.get(i).getCliente().getNome()
-										+ "CPF: " + contasCadastradas.get(i).getCliente().getCpf();
+										+ " -> CPF: " + contasCadastradas.get(i).getCliente().getCpf() + "\n";
 								buscarConta = false;
 							}
 						}
 
 					} else {
 						return "O numero " + numeroAgencia + " não corresponde a agência: " + nomeAgencia;
-
 					}
 				}
+				if (!buscarConta) {
+					break;
+				}
+
 			}
 			if (buscarConta) {
 				return "Nenhuma conta aberta na agência " + nomeAgencia
 						+ "\nVocê pode ser o primeiro, abra já sua conta JJBank";
+			} else {
+				return informacoesContas;
 			}
-			return null;
 		}
 	}
 }
