@@ -252,9 +252,9 @@ public class Main {
 							"$$$$$ -- Sistema JJBank -- $$$$$", JOptionPane.QUESTION_MESSAGE);
 					if (contasCadastradas.get(i).getBanco().getNumero().equals("JJBank: " + numeroAgencia)) {
 						for (int j = 0; j < contasCadastradas.size(); j++) {
-							if (contasCadastradas.get(i).getBanco().getNome().equals("JJBank: " + nomeAgencia)) {
-								informacoesContas += "Nome: " + contasCadastradas.get(i).getCliente().getNome()
-										+ " -> CPF: " + contasCadastradas.get(i).getCliente().getCpf() + "\n";
+							if (contasCadastradas.get(j).getBanco().getNome().equals("JJBank: " + nomeAgencia)) {
+								informacoesContas += "Nome: " + contasCadastradas.get(j).getCliente().getNome()
+										+ " -> CPF: " + contasCadastradas.get(j).getCliente().getCpf() + "\n";
 								buscarConta = false;
 							}
 						}
